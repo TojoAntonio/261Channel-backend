@@ -1,0 +1,19 @@
+<IfModule mod_rewrite.c>
+
+	Options +FollowSymlinks
+	RewriteEngine On
+
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule ^(.*)$ /261back/index.php/$1 [L]
+	
+	RewriteCond %{REQUEST_FILENAME} ^($1*assets*$2)$
+	RewriteRule ^(.*)$ /261back/index.php [F]
+
+</IfModule>
+
+<IfModule !mod_rewrite.c>
+
+	ErrorDocument 404 /index.php
+
+</IfModule>

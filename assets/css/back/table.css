@@ -1,0 +1,47 @@
+table{
+	border: 1px solid black;
+	border-collapse: collapse;
+	width:auto;
+}
+
+th{
+	background-color:black;
+	color:white;
+}
+
+td{
+	border: 1px solid black;
+	padding:5px;
+}
+
+.chkbx{
+	min-width:15px;
+	text-align:center;
+}
+
+.id{
+	min-width:30px;
+	text-align:center;
+}
+
+.lib{
+	min-width:200px;
+}
+
+.desc{
+	min-width:600px;
+}
+
+.nom, .prenom{
+	min-width:200px;
+}
+
+.sexe{
+	min-width:75px;
+	text-align:center;
+}
+
+.profil{
+	min-width:100px;
+	text-align:center;
+}
