@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <link rel="icon" type="image/png" href="<?php echo base_url().'assets/images/logo.png'; ?>" />
-    <title>DagoTV Administration - <?php echo $title; ?></title>
+    <title>261Channel Administration - <?php echo $title; ?></title>
 </head>
 <body id="home">
     <div class="wrap">

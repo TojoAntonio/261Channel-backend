@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="author" content="DAGOnline TV">
     <meta name="description" content="Site web Malgache de TV en ligne">
-    <title>DagoTV Online | Malagasy vision</title>
+    <title>261Channel Online | Malagasy vision</title>
 
     <!-- FRAMEWORK CSS -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

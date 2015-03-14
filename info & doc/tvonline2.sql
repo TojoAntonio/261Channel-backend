@@ -68,8 +68,8 @@ CREATE TABLE IF NOT EXISTS `emission` (
 --
 
 INSERT INTO `emission` (`IDEMISSION`, `IDCATEGORIE`, `IDTYPE`, `E_NOM`, `E_DUREE`, `E_ZANAKA`, `E_CHEMIN`, `E_POCHETTE`) VALUES
-(42, 1, 1, 'Star academy 4', 300, NULL, 'http://localhost/dagotv/assets/videos/c46c9ebfb4712e3f482348ae005ed1dd.mp4', NULL),
-(43, 1, 1, 'EdSheran', 300, NULL, 'http://localhost/dagotv/assets/videos/a9842ae329e3cea7d5ce1f516b201bdd.mp4', NULL),
+(42, 1, 1, 'Star academy 4', 300, NULL, 'http://localhost/261Channel_backend/assets/videos/c46c9ebfb4712e3f482348ae005ed1dd.mp4', NULL),
+(43, 1, 1, 'EdSheran', 300, NULL, 'http://localhost/261Channel_backend/assets/videos/a9842ae329e3cea7d5ce1f516b201bdd.mp4', NULL),
 (58, 1, 1, 'test', 600, '42,43', NULL, NULL);
 
 -- --------------------------------------------------------
