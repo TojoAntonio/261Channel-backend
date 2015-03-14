@@ -19,7 +19,7 @@
 </style>
 <div class="monstyle">
     <h3 style="color: white;"><u>Plan de cette section...</u></h3><br /><br />
-    <?php echo lien('accueil', '<input type="button" value="Front-End (Visiteur)" style="width:300px;height:30px;" />','title="Retour au Front-Office du site" style="text-decoration:none"').'<br><br>'; ?>
+    <?php //echo lien('administration/accueil', '<input type="button" value="Front-End (Visiteur)" style="width:300px;height:30px;" />','title="Retour au Front-Office du site" style="text-decoration:none"').'<br><br>'; ?>
 	<?php echo lien('administration/accueil', '<input type="button" value="Accueil" style="width:300px;height:30px;" />','title="Page d\'accueil de l\'Administration" style="text-decoration:none"').'<br><br>'; ?>
 	<?php echo lien('administration/emission', '<input type="button" value="Emissions" style="width:300px;height:30px;" />','title="Emissions" style="text-decoration:none"').'<br><br>'; ?>
     <?php echo lien('administration/categorie', '<input type="button" value="Catégories" style="width:300px;height:30px;" />','title="Catégories" style="text-decoration:none"').'<br><br>'; ?>
