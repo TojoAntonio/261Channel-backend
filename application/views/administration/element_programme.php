@@ -14,7 +14,7 @@
         <div class="wrap" style="margin-top:5%;min-height: 300px;">
             <div id="left">
                 <h2><?php echo $title; ?></h2>
-                <br />
+                <div style="clear:both"></div>
                 <p>
                     <style>
                         table select{

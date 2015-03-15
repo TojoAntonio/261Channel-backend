@@ -14,7 +14,7 @@
         <div class="wrap" style="margin-top:5%;min-height: 300px;">
             <div id="left">
                 <h2>Bienvenue sur la page d'administration</h2>
-                <br />
+                <div style="clear:both"></div>
                 <p>
                     Cette section est une partie du site vous permettant la maintenance.<br/>
                     Vous pourrez mettre à jour les différentes parties du site.

@@ -14,23 +14,22 @@
     <div class="wrap" style="margin-top:5%;min-height: 300px;">
         <div id="left">
             <h2><?php echo $title; ?></h2>
-            <br />
-            <div id="upload">
+            <div style="clear:both"></div>
             <?php echo lien('administration/emission/simple', '<input type="button" value="Emission simple" style="width:150px;height:25px;" />','title="Création d\'une émission simple" style="text-decoration:none"'); ?>
             <?php echo lien('administration/emission/composee', '<input type="button" value="Emission composée" style="width:150px;height:25px;" />','title="Création d\'une émission composée" style="text-decoration:none"'); ?>
             <?php echo lien('administration/emission/previsualisation', '<input type="button" value="Visualisations" style="width:150px;height:25px;" />','title="Visualisation d\'une émission" style="text-decoration:none"'); ?>
-            <br /><br/>
-            <style>
-                .back th{
-                    background:black;
-                    color:white;
-                    font-weight: bold;
-                    min-width: 100px;
-                }
-                table{
-                    border-collapse: collapse;
-                }
-            </style>
+                <br /><br/>
+                <style>
+                    .back th{
+                        background:black;
+                        color:white;
+                        font-weight: bold;
+                        min-width: 100px;
+                    }
+                    table{
+                        border-collapse: collapse;
+                    }
+                </style>
                 <form action="<?php echo site_url('administration/emission/suppression'); ?>" method="POST">
                 <?php
                     echo '<table border="1" class="back"><tr>';
@@ -50,7 +49,6 @@
                 <br />
                 <input type="submit" value="Supprimer" name="suppr" style="width:150px;height:25px;" />
                 </form>
-            </div>
         </div>
         <?php $this->load->view('administration/template/footer.php'); ?>
     </div>

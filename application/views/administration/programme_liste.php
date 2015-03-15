@@ -32,7 +32,9 @@
         <div class="wrap" style="margin-top:5%;min-height: 300px;">
             <div id="left">
                 <h2><?php echo $title; ?></h2>
-                <br /><?php echo lien('administration/programme/creation', '<input type="button" value="Création de programme" style="width:300px;height:30px;" />','title="Création de programme" style="text-decoration:none"').'<br/>'; ?>
+                <div style="clear:both"></div>
+                <br />
+                <?php echo lien('administration/programme/creation', '<input type="button" value="Création de programme" style="width:300px;height:30px;" />','title="Création de programme" style="text-decoration:none"').'<br/>'; ?>
                 <br />
                 <div>
                     <style>

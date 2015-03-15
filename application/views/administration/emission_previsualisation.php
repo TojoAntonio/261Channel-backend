@@ -15,6 +15,7 @@
     <div class="wrap" style="margin-top:5%;min-height: 500px;">
         <div id="left">
             <h2><?php echo $title; ?></h2>
+            <div style="clear:both"></div>
             <div>
                 <br />
                 <?php echo $code; ?>

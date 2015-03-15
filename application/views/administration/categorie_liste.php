@@ -14,7 +14,7 @@
         <div class="wrap" style="margin-top:5%;min-height: 300px;">
             <div id="left">
                 <h2><?php echo $title; ?></h2>
-                <br />
+                <div style="clear:both"></div>
                 <p>
                     <form action="<?php echo site_url('administration/categorie/traitement'); ?>" method="POST">
                         <?php echo lien('administration/categorie/fiche', '<input type="button" value="Ajouter" style="width:100px;height:25px;" />','title="Fiche catégorie" style="text-decoration:none"'); ?>

@@ -14,6 +14,7 @@
         <div class="wrap" style="margin-top:5%;min-height: 300px;">
             <div id="left">
                 <h2><?php echo $title; ?></h2>
+                <div style="clear:both"></div>
                 <p>
 				<?php echo form_open('administration/type/fiche'); ?>
 				<?php echo '<br>Libellé <br/>'.form_input(array('name'=>'libelle','style'=>'width:200px;height:25px','value'=>set_value('libelle'))).form_error('libelle','<b style="color:red">','</b>').'<br>'; ?>
