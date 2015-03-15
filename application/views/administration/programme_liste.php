@@ -18,6 +18,11 @@
                             $("#display").empty().hide();
                             $("#display").append(res);
                             $("#display").fadeIn(300);
+                        },
+                        error:function(){
+                            $("#display").empty().hide();
+                            $("#display").append("<p>Impossible de récupérer les données</p>");
+                            $("#display").fadeIn(300);
                         }
                     });
                 });
