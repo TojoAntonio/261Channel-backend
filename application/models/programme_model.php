@@ -20,7 +20,7 @@
         }
         
             function addElement($data){
-                $this->db->insert('programmeemission', $data);
+                $this->db->insert('association_3', $data);
             }
         
         function update($data){
@@ -51,7 +51,7 @@
         }
         
         function emission_programme($idprog){
-            $req1 = 'select idemission from programmeemission where idprogramme='.$idprog;
+            $req1 = 'select idemission from association_3 where idprogramme='.$idprog;
             $req2 = 'select * from emission e join categorieage c on e.IDCATEGORIE = c.IDCATEGORIE join typeemission t on e.IDTYPE = t.IDTYPE where idemission in ('.$req1.')';
             $res = $this->db->query($req2);
             if($res->num_rows>0):
