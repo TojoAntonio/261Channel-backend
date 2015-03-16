@@ -59,14 +59,18 @@ class Emission_model extends CI_Model {
                 if(file_exists($path)){
                     unlink($path); // need relative path
                 }
+                $data=array(
+                    'SUPPRIME' => 1
+                );
                 $this->db->where('IDEMISSION', $id);
-                $this->db->delete('emission');
+                $this->db->update('emission',$data);
             }
         }
     }
     
     function getAll(){
-        $res = $this->db->get('emission');
+        $res = $this->db->get('emission')
+                        ->where('SUPPRIME',0);
         if($res->num_rows()>0){
             return $res->result();
         }
@@ -74,14 +78,16 @@ class Emission_model extends CI_Model {
     
     function getAllSimple(){
         $this->db->where('E_ZANAKA', NULL);
-        $res = $this->db->get('emission');
+        $res = $this->db->get('emission')
+            ->where('SUPPRIME',0);
         if($res->num_rows()>0){
             return $res->result();
         }
     }
     
     function get($id){
-        $this->db->where('IDEMISSION', $id);
+        $this->db->where('IDEMISSION', $id)
+                ->where('SUPPRIME',0);
         $res = $this->db->get('emission');
         if($res->num_rows()>0){
             return $res->result();
