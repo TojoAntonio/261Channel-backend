@@ -17,7 +17,9 @@
             if($this->input->post('save')){
                 $this->load->model('programme_model');
                 $data = array(
-                    'p_date' => $this->input->post('daty')
+                    'p_date' => $this->input->post('daty'),
+                    'hdebut' => $this->input->post('hdebut'),
+                    'hfin' => $this->input->post('hfin')
                 );
                 $this->programme_model->insert($data);
                 $this->liste();

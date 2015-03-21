@@ -20,7 +20,8 @@
                 <?php
                 echo form_open_multipart('administration/programme/creation');
                 echo 'Date :<br/><input type="date" name="daty" value="'.date("Y-m-d").'" style="width:150px;height:25px" />';
-                echo '<br/><br/>Durée :<br/><input type="text" name="duree" style="width:100px;height:25px;" placeholder="en seconde" />';
+                echo '<br/><br/>Heure début :<br/><input type="text" name="hdebut" style="width:100px;height:25px;" placeholder="HH:mm" />';
+                echo '<br/><br/>Heure fin :<br/><input type="text" name="hfin" style="width:100px;height:25px;" placeholder="HH:mm" />';
                 echo '<br/><br/><br/><input type="submit" name="save" value="Sauvegarder" style="width:100px;height:25px;" /> ';
                 echo lien('administration/programme','<input type="button" value="Annuler" style="width:100px;height:25px" />','title="Fiche programme" style="text-decoration:none"');
                 echo form_close();
