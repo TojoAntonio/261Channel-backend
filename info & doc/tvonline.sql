@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.4
+-- version 3.5.2.2
 -- http://www.phpmyadmin.net
 --
--- Client :  127.0.0.1
--- Généré le :  Dim 15 Mars 2015 à 19:37
--- Version du serveur :  5.6.15-log
--- Version de PHP :  5.5.8
+-- Client: 127.0.0.1
+-- Généré le: Sam 21 Mars 2015 à 05:20
+-- Version du serveur: 5.5.27
+-- Version de PHP: 5.4.7
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de données :  `tvonline`
+-- Base de données: `tvonline`
 --
 
 -- --------------------------------------------------------
@@ -126,21 +126,24 @@ INSERT INTO `emission` (`IDEMISSION`, `IDCATEGORIE`, `IDTYPE`, `E_NOM`, `E_DUREE
 -- --------------------------------------------------------
 
 --
--- Doublure de structure pour la vue `emissionlike`
+-- Structure de la table `emissionlike`
 --
+
 CREATE TABLE IF NOT EXISTS `emissionlike` (
-`IDEMISSION` int(11)
-,`IDCATEGORIE` int(11)
-,`IDTYPE` int(11)
-,`E_NOM` varchar(50)
-,`E_DUREE` time
-,`E_ZANAKA` varchar(100)
-,`E_CHEMIN` varchar(200)
-,`E_PICTURE` varchar(200)
-,`E_DESCRIPTION` varchar(1000)
-,`suggeré` tinyint(1)
-,`nb_like` bigint(21)
-);
+  `IDEMISSION` int(11) DEFAULT NULL,
+  `IDCATEGORIE` int(11) DEFAULT NULL,
+  `IDTYPE` int(11) DEFAULT NULL,
+  `E_NOM` varchar(50) DEFAULT NULL,
+  `E_DUREE` time DEFAULT NULL,
+  `E_ZANAKA` varchar(100) DEFAULT NULL,
+  `E_CHEMIN` varchar(200) DEFAULT NULL,
+  `E_PICTURE` varchar(200) DEFAULT NULL,
+  `E_DESCRIPTION` varchar(1000) DEFAULT NULL,
+  `suggeré` tinyint(1) DEFAULT NULL,
+  `nb_like` bigint(21) DEFAULT NULL,
+  `SUPPRIME` tinyint(4) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 -- --------------------------------------------------------
 
 --
@@ -315,109 +318,48 @@ INSERT INTO `user` (`IDUSER`, `U_NOM`, `U_MDP`, `U_PSEUDO`, `U_PAYS`, `U_VILLE`,
 -- --------------------------------------------------------
 
 --
--- Doublure de structure pour la vue `vueemission`
+-- Structure de la table `vueemission`
 --
+
 CREATE TABLE IF NOT EXISTS `vueemission` (
-`idprogramme` int(11)
-,`p_date` date
-,`idemission` int(11)
-,`nb_like` bigint(21)
-,`cat_libelle` varchar(50)
-,`t_libelle` varchar(50)
-,`e_nom` varchar(50)
-,`e_duree` time
-,`e_zanaka` varchar(100)
-,`e_chemin` varchar(200)
-,`e_picture` varchar(200)
-,`e_description` varchar(1000)
-,`E_SUGGESTION` tinyint(1)
-,`heure_diffusion` time
-);
+  `idprogramme` int(11) DEFAULT NULL,
+  `p_date` date DEFAULT NULL,
+  `idemission` int(11) DEFAULT NULL,
+  `nb_like` bigint(21) DEFAULT NULL,
+  `cat_libelle` varchar(50) DEFAULT NULL,
+  `t_libelle` varchar(50) DEFAULT NULL,
+  `e_nom` varchar(50) DEFAULT NULL,
+  `e_duree` time DEFAULT NULL,
+  `e_zanaka` varchar(100) DEFAULT NULL,
+  `e_chemin` varchar(200) DEFAULT NULL,
+  `e_picture` varchar(200) DEFAULT NULL,
+  `e_description` varchar(1000) DEFAULT NULL,
+  `E_SUGGESTION` tinyint(1) DEFAULT NULL,
+  `heure_diffusion` time DEFAULT NULL,
+  `SUPPRIME` tinyint(4) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 -- --------------------------------------------------------
 
 --
--- Doublure de structure pour la vue `vueemissionpardefaut`
+-- Structure de la table `vueemissionpardefaut`
 --
+
 CREATE TABLE IF NOT EXISTS `vueemissionpardefaut` (
-`IDEMISSION` int(11)
-,`IDCATEGORIE` int(11)
-,`IDTYPE` int(11)
-,`E_NOM` varchar(50)
-,`E_DUREE` time
-,`E_ZANAKA` varchar(100)
-,`E_CHEMIN` varchar(200)
-,`E_PICTURE` varchar(200)
-,`E_DESCRIPTION` varchar(1000)
-,`suggeré` tinyint(1)
-,`jour` varchar(50)
-,`Heure` time
-);
--- --------------------------------------------------------
-
---
--- Doublure de structure pour la vue `vueemissionparprogramme`
---
-CREATE TABLE IF NOT EXISTS `vueemissionparprogramme` (
-);
--- --------------------------------------------------------
-
---
--- Structure de la vue `emissionlike`
---
-DROP TABLE IF EXISTS `emissionlike`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `emissionlike` AS select `e`.`IDEMISSION` AS `IDEMISSION`,`e`.`IDCATEGORIE` AS `IDCATEGORIE`,`e`.`IDTYPE` AS `IDTYPE`,`e`.`E_NOM` AS `E_NOM`,`e`.`E_DUREE` AS `E_DUREE`,`e`.`E_ZANAKA` AS `E_ZANAKA`,`e`.`E_CHEMIN` AS `E_CHEMIN`,`e`.`E_PICTURE` AS `E_PICTURE`,`e`.`E_DESCRIPTION` AS `E_DESCRIPTION`,`e`.`suggeré` AS `suggeré`,(select count(`like`.`idEmission`) from `like` where (`like`.`idEmission` = `e`.`IDEMISSION`) group by `like`.`idEmission`) AS `nb_like` from `emission` `e`;
-
--- --------------------------------------------------------
-
---
--- Structure de la vue `vueemission`
---
-DROP TABLE IF EXISTS `vueemission`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vueemission` AS (select `p`.`IDPROGRAMME` AS `idprogramme`,`p`.`P_DATE` AS `p_date`,`e`.`IDEMISSION` AS `idemission`,(select count(`like`.`idEmission`) from `like` where (`like`.`idEmission` = `e`.`IDEMISSION`)) AS `nb_like`,`ca`.`CAT_LIBELLE` AS `cat_libelle`,`te`.`T_LIBELLE` AS `t_libelle`,`e`.`E_NOM` AS `e_nom`,`e`.`E_DUREE` AS `e_duree`,`e`.`E_ZANAKA` AS `e_zanaka`,`e`.`E_CHEMIN` AS `e_chemin`,`e`.`E_PICTURE` AS `e_picture`,`e`.`E_DESCRIPTION` AS `e_description`,`e`.`suggeré` AS `E_SUGGESTION`,`as3`.`HEURE_DIFFUSION` AS `heure_diffusion` from ((((`programmeemission` `as3` join `emission` `e` on((`as3`.`IDEMISSION` = `e`.`IDEMISSION`))) join `programme` `p` on((`as3`.`IDPROGRAMME` = `p`.`IDPROGRAMME`))) join `typeemission` `te` on((`te`.`IDTYPE` = `e`.`IDTYPE`))) join `categorieage` `ca` on((`ca`.`IDCATEGORIE` = `e`.`IDCATEGORIE`))));
-
--- --------------------------------------------------------
-
---
--- Structure de la vue `vueemissionpardefaut`
---
-DROP TABLE IF EXISTS `vueemissionpardefaut`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vueemissionpardefaut` AS select `emission`.`IDEMISSION` AS `IDEMISSION`,`emission`.`IDCATEGORIE` AS `IDCATEGORIE`,`emission`.`IDTYPE` AS `IDTYPE`,`emission`.`E_NOM` AS `E_NOM`,`emission`.`E_DUREE` AS `E_DUREE`,`emission`.`E_ZANAKA` AS `E_ZANAKA`,`emission`.`E_CHEMIN` AS `E_CHEMIN`,`emission`.`E_PICTURE` AS `E_PICTURE`,`emission`.`E_DESCRIPTION` AS `E_DESCRIPTION`,`emission`.`suggeré` AS `suggeré`,`emissionpardefaut`.`Jour` AS `jour`,`emissionpardefaut`.`Heure` AS `Heure` from (`emission` join `emissionpardefaut` on((`emissionpardefaut`.`idEmission` = `emission`.`IDEMISSION`)));
-
--- --------------------------------------------------------
-
---
--- Structure de la vue `vueemissionparprogramme`
---
-DROP TABLE IF EXISTS `vueemissionparprogramme`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vueemissionparprogramme` AS (select `c`.`CAT_LIBELLE` AS `cat_libelle`,`te`.`T_LIBELLE` AS `t_libelle`,`e`.`E_NOM` AS `e_nom`,`e`.`E_DUREE` AS `e_duree`,`e`.`E_ZANAKA` AS `e_zanaka`,`e`.`E_CHEMIN` AS `e_chemin`,`e`.`E_PICTURE` AS `e_picture`,`e`.`E_DESCRIPTION` AS `e_description`,`as3`.`IDPROGRAMME` AS `idprogramme`,`as3`.`HEURE_DIFFUSION` AS `heure_diffusion`,`as3`.`IDEMISSION` AS `idemission` from (((`association_3` `as3` join `emission` `e` on((`e`.`IDEMISSION` = `as3`.`IDEMISSION`))) join `typeemission` `te` on((`te`.`IDTYPE` = `e`.`IDTYPE`))) join `categorieage` `c` on((`c`.`IDCATEGORIE` = `e`.`IDCATEGORIE`))));
-
---
--- Contraintes pour les tables exportées
---
-
---
--- Contraintes pour la table `emission`
---
-ALTER TABLE `emission`
-  ADD CONSTRAINT `FK_ASSOCIATION_1` FOREIGN KEY (`IDCATEGORIE`) REFERENCES `categorieage` (`IDCATEGORIE`),
-  ADD CONSTRAINT `FK_ASSOCIATION_2` FOREIGN KEY (`IDTYPE`) REFERENCES `typeemission` (`IDTYPE`);
-
---
--- Contraintes pour la table `programmeemission`
---
-ALTER TABLE `programmeemission`
-  ADD CONSTRAINT `FK_ASSOCIATION_3` FOREIGN KEY (`IDEMISSION`) REFERENCES `emission` (`IDEMISSION`),
-  ADD CONSTRAINT `FK_ASSOCIATION_4` FOREIGN KEY (`IDPROGRAMME`) REFERENCES `programme` (`IDPROGRAMME`);
-
---
--- Contraintes pour la table `user`
---
-ALTER TABLE `user`
-  ADD CONSTRAINT `fk_idabonnement` FOREIGN KEY (`IDABONNEMENT`) REFERENCES `abonnement` (`IDABONNEMENT`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  `IDEMISSION` int(11) DEFAULT NULL,
+  `IDCATEGORIE` int(11) DEFAULT NULL,
+  `IDTYPE` int(11) DEFAULT NULL,
+  `E_NOM` varchar(50) DEFAULT NULL,
+  `E_DUREE` time DEFAULT NULL,
+  `E_ZANAKA` varchar(100) DEFAULT NULL,
+  `E_CHEMIN` varchar(200) DEFAULT NULL,
+  `E_PICTURE` varchar(200) DEFAULT NULL,
+  `E_DESCRIPTION` varchar(1000) DEFAULT NULL,
+  `suggeré` tinyint(1) DEFAULT NULL,
+  `jour` varchar(50) DEFAULT NULL,
+  `Heure` time DEFAULT NULL,
+  `SUPPRIME` tinyint(4) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
