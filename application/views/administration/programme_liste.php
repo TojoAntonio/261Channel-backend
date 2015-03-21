@@ -52,6 +52,8 @@
                         table{
                             border-collapse: collapse;
                         }
+                        tr{cursor:pointer}
+                        tr:hover{background-color:silver}
                     </style>
                     <form action="<?php echo site_url('administration/programme/choix_programme'); ?>" method="POST" style="float: left;">
                         <table border="1">

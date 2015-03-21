@@ -29,6 +29,8 @@
                     table{
                         border-collapse: collapse;
                     }
+                    tr{cursor:pointer}
+                    tr:hover{background-color:silver}
                 </style>
                 <form action="<?php echo site_url('administration/emission/suppression'); ?>" method="POST">
                 <?php

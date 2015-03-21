@@ -31,6 +31,8 @@
                     <style>
                         table{border-collapse:collapse;}
                         th{background:black;color:white;font-weight:bold;}
+                        tr{cursor:pointer}
+                        tr:hover{background-color:silver}
                     </style>
                     <table border="1">
                         <tr>
